@@ -31,7 +31,6 @@ root = Tk()
 display_message = StringVar()
 root.title('VISCA IP Camera Controller')
 root['background'] = 'white'
-#Label(root, text='VISCA IP Camera Controller').grid(row=0, column=0, columnspan=100)
 
 store_column = 0
 label_column = 1
@@ -146,7 +145,7 @@ Label(root, text='Pan', width=button_width).grid(row=slider_row, column=slider_c
 pan_slider = Scale(root, from_=24, to=-24, orient=HORIZONTAL, command=pan_this)
 pan_slider.set(0)
 pan_slider.bind("<ButtonRelease-1>", reset_sliders)
-pan_slider.grid(row=slider_row+1, column=slider_column)
+pan_slider.grid(row=slider_row+1, column=slider_column, rowspan=2)
 
 # Tilt slider
 def tilt_this(tilt_var):
@@ -155,7 +154,7 @@ Label(root, text='Tilt', width=button_width).grid(row=slider_row, column=slider_
 tilt_slider = Scale(root, from_=24, to=-24, command=pan_this)
 tilt_slider.set(0)
 tilt_slider.bind("<ButtonRelease-1>", reset_sliders)
-tilt_slider.grid(row=slider_row+1, column=slider_column+1)
+tilt_slider.grid(row=slider_row+1, column=slider_column+1, rowspan=4)
 
 
 # Zoom slider
@@ -165,7 +164,7 @@ Label(root, text='Zoom', bg=zoom_color, width=button_width).grid(row=slider_row,
 zoom_slider = Scale(root, bg=zoom_color, from_=7, to=-7, command=zoom_this)
 zoom_slider.set(0)
 zoom_slider.bind("<ButtonRelease-1>", reset_sliders)
-zoom_slider.grid(row=slider_row+1, column=slider_column+2)
+zoom_slider.grid(row=slider_row+1, column=slider_column+2, rowspan=4)
 
 # Focus slider
 def focus_this(focus_var):
@@ -174,7 +173,7 @@ Label(root, text='Focus', bg=focus_color, width=button_width).grid(row=slider_ro
 focus_slider = Scale(root, bg=focus_color, from_=7, to=-7, command=focus_this)
 focus_slider.set(0)
 focus_slider.bind("<ButtonRelease-1>", reset_sliders)
-focus_slider.grid(row=slider_row+1, column=slider_column+3)
+focus_slider.grid(row=slider_row+1, column=slider_column+3, rowspan=4)
 
 # On off connect buttons
 Label(root, text='Camera', bg=on_off_color, width=button_width).grid(row=on_off_row, column=on_off_column)
