@@ -26,7 +26,7 @@ def save_preset_labels():
 
 # GUI
 
-from tkinter import Tk, StringVar, Button, Label, Entry, Scale, IntVar, W
+from tkinter import Tk, StringVar, Button, Label, Entry, Scale, HORIZONTAL
 root = Tk()
 display_message = StringVar()
 root.title('VISCA IP Camera Controller')
@@ -36,15 +36,10 @@ root['background'] = 'white'
 store_column = 0
 label_column = 1
 recall_column = 2
-pan_tilt_column = 5
-pan_tilt_row = 1
-zoom_column = 3
-zoom_row = 4
-
-focus_column = 3
-focus_row = 8
+slider_column = 3
+slider_row = 1
 on_off_column = 3
-on_off_row = 11
+on_off_row = 12
 button_width = 8
 store_color = 'red'
 recall_color = 'light grey'
@@ -138,26 +133,54 @@ tilt_speed_slider.grid(row=pan_tilt_row+4, column=pan_tilt_column+1, rowspan=4)
 #Scale(root, from_=0, to=17, variable=movement_speed, orient=HORIZONTAL, label='Speed').grid(row=5, column=2, columnspan=3)
 #'''
 
+def reset_sliders(e):
+    pan_slider.set(0)
+    tilt_slider.set(0)
+    zoom_slider.set(0)
+    focus_slider.set(0)
+
+# Pan slider
+def pan_this(pan_var):
+    c.pantilt(int(pan_var), 0)
+Label(root, text='Pan', width=button_width).grid(row=slider_row, column=slider_column)
+pan_slider = Scale(root, from_=24, to=-24, orient=HORIZONTAL, command=pan_this)
+pan_slider.set(0)
+pan_slider.bind("<ButtonRelease-1>", reset_sliders)
+pan_slider.grid(row=slider_row+1, column=slider_column)
+
+# Tilt slider
+def tilt_this(tilt_var):
+    c.pantilt(0, int(tilt_var))
+Label(root, text='Tilt', width=button_width).grid(row=slider_row, column=slider_column+1)
+tilt_slider = Scale(root, from_=24, to=-24, command=pan_this)
+tilt_slider.set(0)
+tilt_slider.bind("<ButtonRelease-1>", reset_sliders)
+tilt_slider.grid(row=slider_row+1, column=slider_column+1)
+
+
 # Zoom slider
 def zoom_this(zoom_var):
     c.zoom(int(zoom_var))
-Label(root, text='Zoom', bg=zoom_color, width=button_width).grid(row=zoom_row, column=zoom_column)
+Label(root, text='Zoom', bg=zoom_color, width=button_width).grid(row=slider_row, column=slider_column+2)
 zoom_slider = Scale(root, bg=zoom_color, from_=7, to=-7, command=zoom_this)
 zoom_slider.set(0)
-zoom_slider.grid(row=zoom_row+1, column=zoom_column)
-#Button(root, text='In', bg=zoom_color, width=button_width, command=lambda: send_message(zoom_tele)).grid(row=zoom_row+1, column=zoom_column)
-#Button(root, text='Stop', bg=zoom_color, width=button_width, command=lambda: send_message(zoom_stop)).grid(row=zoom_row+2, column=zoom_column)
-#Button(root, text='Out', bg=zoom_color, width=button_width, command=lambda: send_message(zoom_wide)).grid(row=zoom_row+3, column=zoom_column)
-# Focus buttons
-#Label(root, text='Focus', width=button_width, bg=focus_color).grid(buttonsrow=focus_row, column=focus_column)
-#Button(root, text='Near', width=button_width, bg=focus_color, command=lambda: send_message(focus_near)).grid(row=focus_row+1, column=focus_column)
-#Button(root, text='Far', width=button_width, bg=focus_color, command=lambda: send_message(focus_far)).grid(row=focus_row+2, column=focus_column)
+zoom_slider.bind("<ButtonRelease-1>", reset_sliders)
+zoom_slider.grid(row=slider_row+1, column=slider_column+2)
+
+# Focus slider
+def focus_this(focus_var):
+    c.manual_focus(int(focus_var))
+Label(root, text='Focus', bg=focus_color, width=button_width).grid(row=slider_row, column=slider_column+3)
+focus_slider = Scale(root, bg=focus_color, from_=7, to=-7, command=focus_this)
+focus_slider.set(0)
+focus_slider.bind("<ButtonRelease-1>", reset_sliders)
+focus_slider.grid(row=slider_row+1, column=slider_column+3)
 
 # On off connect buttons
 Label(root, text='Camera', bg=on_off_color, width=button_width).grid(row=on_off_row, column=on_off_column)
 Button(root, text='On', bg=on_off_color, width=button_width, command=lambda: c.set_power(True)).grid(row=on_off_row+1, column=on_off_column)
-Button(root, text='Off', bg=on_off_color, width=button_width, command=lambda: c.set_power(False)).grid(row=on_off_row+3, column=on_off_column)
-Button(root, text='Info Off', bg=on_off_color, width=button_width, command=lambda: c.info_display(False)).grid(row=on_off_row+4, column=on_off_column)
+Button(root, text='Off', bg=on_off_color, width=button_width, command=lambda: c.set_power(False)).grid(row=on_off_row+2, column=on_off_column)
+Button(root, text='Info Off', bg=on_off_color, width=button_width, command=lambda: c.info_display(False)).grid(row=on_off_row+3, column=on_off_column)
 
 # IP Label
 #Label(root, text=camera_ip+':'+str(camera_port)).grid(row=6, column=0, columnspan=3)
