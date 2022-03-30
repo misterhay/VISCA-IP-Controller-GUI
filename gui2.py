@@ -141,8 +141,8 @@ def reset_sliders(e):
 # Pan slider
 def pan_this(pan_var):
     c.pantilt(int(pan_var), 0)
-Label(root, text='Pan', width=button_width).grid(row=slider_row, column=slider_column)
-pan_slider = Scale(root, from_=24, to=-24, orient=HORIZONTAL, command=pan_this)
+Label(root, text='Pan', bg=pan_tilt_color, width=button_width).grid(row=slider_row, column=slider_column)
+pan_slider = Scale(root, bg=pan_tilt_color, from_=24, to=-24, orient=HORIZONTAL, command=pan_this)
 pan_slider.set(0)
 pan_slider.bind("<ButtonRelease-1>", reset_sliders)
 pan_slider.grid(row=slider_row+1, column=slider_column, rowspan=2)
@@ -150,8 +150,8 @@ pan_slider.grid(row=slider_row+1, column=slider_column, rowspan=2)
 # Tilt slider
 def tilt_this(tilt_var):
     c.pantilt(0, int(tilt_var))
-Label(root, text='Tilt', width=button_width).grid(row=slider_row, column=slider_column+1)
-tilt_slider = Scale(root, from_=24, to=-24, command=pan_this)
+Label(root, text='Tilt', bg=pan_tilt_color, width=button_width).grid(row=slider_row, column=slider_column+1)
+tilt_slider = Scale(root, bg=pan_tilt_color, from_=24, to=-24, command=pan_this)
 tilt_slider.set(0)
 tilt_slider.bind("<ButtonRelease-1>", reset_sliders)
 tilt_slider.grid(row=slider_row+1, column=slider_column+1, rowspan=4)
