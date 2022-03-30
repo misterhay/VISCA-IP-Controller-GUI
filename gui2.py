@@ -24,9 +24,17 @@ def save_preset_labels():
             f.write('\n')
     f.close()
 
+def store(n):
+    c.info_display(False)
+    c.save_preset(n)
+
+def recall(n):
+    c.info_display(False)
+    c.recall_preset(n)
+
 # GUI
 
-from tkinter import Tk, StringVar, Button, Label, Entry, Scale, HORIZONTAL
+from tkinter import Tk, StringVar, Button, Label, Entry, Scale
 root = Tk()
 display_message = StringVar()
 root.title('VISCA IP Camera Controller')
@@ -49,41 +57,41 @@ on_off_color = 'violet'
 
 # Preset store buttons
 Label(root, text='Store', bg=store_color).grid(row=1, column=store_column)
-Button(root, text=0, width=3, bg=store_color, command=lambda: c.save_preset(0)).grid(row=2, column=store_column)
-Button(root, text=1, width=3, bg=store_color, command=lambda: c.save_preset(1)).grid(row=3, column=store_column)
-Button(root, text=2, width=3, bg=store_color, command=lambda: c.save_preset(2)).grid(row=4, column=store_column)
-Button(root, text=3, width=3, bg=store_color, command=lambda: c.save_preset(3)).grid(row=5, column=store_column)
-Button(root, text=4, width=3, bg=store_color, command=lambda: c.save_preset(4)).grid(row=6, column=store_column)
-Button(root, text=5, width=3, bg=store_color, command=lambda: c.save_preset(5)).grid(row=7, column=store_column)
-Button(root, text=6, width=3, bg=store_color, command=lambda: c.save_preset(6)).grid(row=8, column=store_column)
-Button(root, text=7, width=3, bg=store_color, command=lambda: c.save_preset(7)).grid(row=9, column=store_column)
-Button(root, text=8, width=3, bg=store_color, command=lambda: c.save_preset(8)).grid(row=10, column=store_column)
-Button(root, text=9, width=3, bg=store_color, command=lambda: c.save_preset(9)).grid(row=11, column=store_column)
-Button(root, text='A', width=3, bg=store_color, command=lambda: c.save_preset(10)).grid(row=12, column=store_column)
-Button(root, text='B', width=3, bg=store_color, command=lambda: c.save_preset(11)).grid(row=13, column=store_column)
-Button(root, text='C', width=3, bg=store_color, command=lambda: c.save_preset(12)).grid(row=14, column=store_column)
-Button(root, text='D', width=3, bg=store_color, command=lambda: c.save_preset(13)).grid(row=15, column=store_column)
-Button(root, text='E', width=3, bg=store_color, command=lambda: c.save_preset(14)).grid(row=16, column=store_column)
-Button(root, text='F', width=3, bg=store_color, command=lambda: c.save_preset(15)).grid(row=17, column=store_column)
+Button(root, text=0, width=3, bg=store_color, command=lambda: store(0)).grid(row=2, column=store_column)
+Button(root, text=1, width=3, bg=store_color, command=lambda: store(1)).grid(row=3, column=store_column)
+Button(root, text=2, width=3, bg=store_color, command=lambda: store(2)).grid(row=4, column=store_column)
+Button(root, text=3, width=3, bg=store_color, command=lambda: store(3)).grid(row=5, column=store_column)
+Button(root, text=4, width=3, bg=store_color, command=lambda: store(4)).grid(row=6, column=store_column)
+Button(root, text=5, width=3, bg=store_color, command=lambda: store(5)).grid(row=7, column=store_column)
+Button(root, text=6, width=3, bg=store_color, command=lambda: store(6)).grid(row=8, column=store_column)
+Button(root, text=7, width=3, bg=store_color, command=lambda: store(7)).grid(row=9, column=store_column)
+Button(root, text=8, width=3, bg=store_color, command=lambda: store(8)).grid(row=10, column=store_column)
+Button(root, text=9, width=3, bg=store_color, command=lambda: store(9)).grid(row=11, column=store_column)
+Button(root, text='A', width=3, bg=store_color, command=lambda: store(10)).grid(row=12, column=store_column)
+Button(root, text='B', width=3, bg=store_color, command=lambda: store(11)).grid(row=13, column=store_column)
+Button(root, text='C', width=3, bg=store_color, command=lambda: store(12)).grid(row=14, column=store_column)
+Button(root, text='D', width=3, bg=store_color, command=lambda: store(13)).grid(row=15, column=store_column)
+Button(root, text='E', width=3, bg=store_color, command=lambda: store(14)).grid(row=16, column=store_column)
+Button(root, text='F', width=3, bg=store_color, command=lambda: store(15)).grid(row=17, column=store_column)
 
 # Recall buttons and entries (as labels)
 Label(root, text='Recall', bg=recall_color).grid(row=1, column=recall_column)
-Button(root, text=0, width=5, bg=recall_color, command=lambda: c.recall_preset(0)).grid(row=2, column=recall_column)
-Button(root, text=1, width=5, bg=recall_color, command=lambda: c.recall_preset(1)).grid(row=3, column=recall_column)
-Button(root, text=2, width=5, bg=recall_color, command=lambda: c.recall_preset(2)).grid(row=4, column=recall_column)
-Button(root, text=3, width=5, bg=recall_color, command=lambda: c.recall_preset(3)).grid(row=5, column=recall_column)
-Button(root, text=4, width=5, bg=recall_color, command=lambda: c.recall_preset(4)).grid(row=6, column=recall_column)
-Button(root, text=5, width=5, bg=recall_color, command=lambda: c.recall_preset(5)).grid(row=7, column=recall_column)
-Button(root, text=6, width=5, bg=recall_color, command=lambda: c.recall_preset(6)).grid(row=8, column=recall_column)
-Button(root, text=7, width=5, bg=recall_color, command=lambda: c.recall_preset(7)).grid(row=9, column=recall_column)
-Button(root, text=8, width=5, bg=recall_color, command=lambda: c.recall_preset(8)).grid(row=10, column=recall_column)
-Button(root, text=9, width=5, bg=recall_color, command=lambda: c.recall_preset(9)).grid(row=11, column=recall_column)
-Button(root, text='A', width=5, bg=recall_color, command=lambda: c.recall_preset('A')).grid(row=12, column=recall_column)
-Button(root, text='B', width=5, bg=recall_color, command=lambda: c.recall_preset('B')).grid(row=13, column=recall_column)
-Button(root, text='C', width=5, bg=recall_color, command=lambda: c.recall_preset('C')).grid(row=14, column=recall_column)
-Button(root, text='D', width=5, bg=recall_color, command=lambda: c.recall_preset('D')).grid(row=15, column=recall_column)
-Button(root, text='E', width=5, bg=recall_color, command=lambda: c.recall_preset('E')).grid(row=16, column=recall_column)
-Button(root, text='F', width=5, bg=recall_color, command=lambda: c.recall_preset('F')).grid(row=17, column=recall_column)
+Button(root, text=0, width=5, bg=recall_color, command=lambda: recall(0)).grid(row=2, column=recall_column)
+Button(root, text=1, width=5, bg=recall_color, command=lambda: recall(1)).grid(row=3, column=recall_column)
+Button(root, text=2, width=5, bg=recall_color, command=lambda: recall(2)).grid(row=4, column=recall_column)
+Button(root, text=3, width=5, bg=recall_color, command=lambda: recall(3)).grid(row=5, column=recall_column)
+Button(root, text=4, width=5, bg=recall_color, command=lambda: recall(4)).grid(row=6, column=recall_column)
+Button(root, text=5, width=5, bg=recall_color, command=lambda: recall(5)).grid(row=7, column=recall_column)
+Button(root, text=6, width=5, bg=recall_color, command=lambda: recall(6)).grid(row=8, column=recall_column)
+Button(root, text=7, width=5, bg=recall_color, command=lambda: recall(7)).grid(row=9, column=recall_column)
+Button(root, text=8, width=5, bg=recall_color, command=lambda: recall(8)).grid(row=10, column=recall_column)
+Button(root, text=9, width=5, bg=recall_color, command=lambda: recall(9)).grid(row=11, column=recall_column)
+Button(root, text='A', width=5, bg=recall_color, command=lambda: recall('A')).grid(row=12, column=recall_column)
+Button(root, text='B', width=5, bg=recall_color, command=lambda: recall('B')).grid(row=13, column=recall_column)
+Button(root, text='C', width=5, bg=recall_color, command=lambda: recall('C')).grid(row=14, column=recall_column)
+Button(root, text='D', width=5, bg=recall_color, command=lambda: recall('D')).grid(row=15, column=recall_column)
+Button(root, text='E', width=5, bg=recall_color, command=lambda: recall('E')).grid(row=16, column=recall_column)
+Button(root, text='F', width=5, bg=recall_color, command=lambda: recall('F')).grid(row=17, column=recall_column)
 try:
     with open('preset_labels.txt') as f:
         labels = f.read().splitlines()
@@ -142,7 +150,7 @@ def reset_sliders(e):
 def pan_this(pan_var):
     c.pantilt(int(pan_var), 0)
 Label(root, text='Pan', bg=pan_tilt_color, width=button_width).grid(row=slider_row, column=slider_column)
-pan_slider = Scale(root, bg=pan_tilt_color, from_=24, to=-24, orient=HORIZONTAL, command=pan_this)
+pan_slider = Scale(root, bg=pan_tilt_color, from_=24, to=-24, orient='horizontal', length=200, command=pan_this)
 pan_slider.set(0)
 pan_slider.bind("<ButtonRelease-1>", reset_sliders)
 pan_slider.grid(row=slider_row+1, column=slider_column, rowspan=2)
@@ -151,29 +159,29 @@ pan_slider.grid(row=slider_row+1, column=slider_column, rowspan=2)
 def tilt_this(tilt_var):
     c.pantilt(0, int(tilt_var))
 Label(root, text='Tilt', bg=pan_tilt_color, width=button_width).grid(row=slider_row, column=slider_column+1)
-tilt_slider = Scale(root, bg=pan_tilt_color, from_=24, to=-24, command=pan_this)
+tilt_slider = Scale(root, bg=pan_tilt_color, from_=24, to=-24, length=200, command=pan_this)
 tilt_slider.set(0)
 tilt_slider.bind("<ButtonRelease-1>", reset_sliders)
-tilt_slider.grid(row=slider_row+1, column=slider_column+1, rowspan=4)
+tilt_slider.grid(row=slider_row+1, column=slider_column+1, rowspan=8)
 
 
 # Zoom slider
 def zoom_this(zoom_var):
     c.zoom(int(zoom_var))
 Label(root, text='Zoom', bg=zoom_color, width=button_width).grid(row=slider_row, column=slider_column+2)
-zoom_slider = Scale(root, bg=zoom_color, from_=7, to=-7, command=zoom_this)
+zoom_slider = Scale(root, bg=zoom_color, from_=7, to=-7, length=200, command=zoom_this)
 zoom_slider.set(0)
 zoom_slider.bind("<ButtonRelease-1>", reset_sliders)
-zoom_slider.grid(row=slider_row+1, column=slider_column+2, rowspan=4)
+zoom_slider.grid(row=slider_row+1, column=slider_column+2, rowspan=8)
 
 # Focus slider
 def focus_this(focus_var):
     c.manual_focus(int(focus_var))
 Label(root, text='Focus', bg=focus_color, width=button_width).grid(row=slider_row, column=slider_column+3)
-focus_slider = Scale(root, bg=focus_color, from_=7, to=-7, command=focus_this)
+focus_slider = Scale(root, bg=focus_color, from_=7, to=-7, length=200, command=focus_this)
 focus_slider.set(0)
 focus_slider.bind("<ButtonRelease-1>", reset_sliders)
-focus_slider.grid(row=slider_row+1, column=slider_column+3, rowspan=4)
+focus_slider.grid(row=slider_row+1, column=slider_column+3, rowspan=8)
 
 # On off connect buttons
 Label(root, text='Camera', bg=on_off_color, width=button_width).grid(row=on_off_row, column=on_off_column)
