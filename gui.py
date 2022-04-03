@@ -47,6 +47,7 @@ slider_column = 3
 slider_row = 1
 on_off_column = 3
 on_off_row = 14
+focus_buttons_row = 10
 button_width = 8
 store_color = 'red'
 recall_color = 'light grey'
@@ -182,6 +183,17 @@ focus_slider = Scale(root, bg=focus_color, from_=7, to=-7, length=200, command=f
 focus_slider.set(0)
 focus_slider.bind("<ButtonRelease-1>", reset_sliders)
 focus_slider.grid(row=slider_row+1, column=slider_column+3, rowspan=8)
+
+# Zoom buttons
+def one_push_focus():
+    c.set_focus_mode('auto')
+    c.set_autofocus_mode('one push trigger')
+Label(root, text='Zoom', bg=focus_color, width=button_width).grid(row=focus_buttons_row, column=on_off_column)
+Button(root, text='Auto', bg=focus_color, width=button_width, command=lambda: c.set_focus_mode('auto')).grid(row=focus_buttons_row+1, column=on_off_column)
+Button(root, text='Manual', bg=focus_color, width=button_width, command=lambda: c.set_focus_mode('manual')).grid(row=focus_buttons_row+2, column=on_off_column)
+#Button(root, text='One Push', bg=focus_color, width=button_width, command=one_push_focus).grid(row=focus_buttons_row+3, column=on_off_column)
+
+
 
 # On off connect buttons
 Label(root, text='Camera', bg=on_off_color, width=button_width).grid(row=on_off_row, column=on_off_column)
