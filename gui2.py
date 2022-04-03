@@ -46,7 +46,7 @@ recall_column = 2
 slider_column = 3
 slider_row = 1
 on_off_column = 3
-on_off_row = 12
+on_off_row = 14
 button_width = 8
 store_color = 'red'
 recall_color = 'light grey'
@@ -159,7 +159,7 @@ pan_slider.grid(row=slider_row+1, column=slider_column, rowspan=2)
 def tilt_this(tilt_var):
     c.pantilt(0, int(tilt_var))
 Label(root, text='Tilt', bg=pan_tilt_color, width=button_width).grid(row=slider_row, column=slider_column+1)
-tilt_slider = Scale(root, bg=pan_tilt_color, from_=24, to=-24, length=200, command=pan_this)
+tilt_slider = Scale(root, bg=pan_tilt_color, from_=24, to=-24, length=200, command=tilt_this)
 tilt_slider.set(0)
 tilt_slider.bind("<ButtonRelease-1>", reset_sliders)
 tilt_slider.grid(row=slider_row+1, column=slider_column+1, rowspan=8)
