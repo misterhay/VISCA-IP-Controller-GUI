@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # https://pro.sony/s3/2019/01/16020225/AES6100121.pdf
 # https://gitlab.viarezo.fr/2018corona/viscaoverip/blob/master/camera2.py
 # sudo apt install python3-tk
@@ -184,16 +184,14 @@ focus_slider.set(0)
 focus_slider.bind("<ButtonRelease-1>", reset_sliders)
 focus_slider.grid(row=slider_row+1, column=slider_column+3, rowspan=8)
 
-# Zoom buttons
+# Focus buttons
 def one_push_focus():
     c.set_focus_mode('auto')
     c.set_autofocus_mode('one push trigger')
-Label(root, text='Zoom', bg=focus_color, width=button_width).grid(row=focus_buttons_row, column=on_off_column)
+Label(root, text='Focus', bg=focus_color, width=button_width).grid(row=focus_buttons_row, column=on_off_column)
 Button(root, text='Auto', bg=focus_color, width=button_width, command=lambda: c.set_focus_mode('auto')).grid(row=focus_buttons_row+1, column=on_off_column)
 Button(root, text='Manual', bg=focus_color, width=button_width, command=lambda: c.set_focus_mode('manual')).grid(row=focus_buttons_row+2, column=on_off_column)
 #Button(root, text='One Push', bg=focus_color, width=button_width, command=one_push_focus).grid(row=focus_buttons_row+3, column=on_off_column)
-
-
 
 # On off connect buttons
 Label(root, text='Camera', bg=on_off_color, width=button_width).grid(row=on_off_row, column=on_off_column)
