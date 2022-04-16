@@ -87,12 +87,12 @@ Button(root, text=6, width=5, bg=recall_color, command=lambda: recall(6)).grid(r
 Button(root, text=7, width=5, bg=recall_color, command=lambda: recall(7)).grid(row=9, column=recall_column)
 Button(root, text=8, width=5, bg=recall_color, command=lambda: recall(8)).grid(row=10, column=recall_column)
 Button(root, text=9, width=5, bg=recall_color, command=lambda: recall(9)).grid(row=11, column=recall_column)
-Button(root, text='A', width=5, bg=recall_color, command=lambda: recall('A')).grid(row=12, column=recall_column)
-Button(root, text='B', width=5, bg=recall_color, command=lambda: recall('B')).grid(row=13, column=recall_column)
-Button(root, text='C', width=5, bg=recall_color, command=lambda: recall('C')).grid(row=14, column=recall_column)
-Button(root, text='D', width=5, bg=recall_color, command=lambda: recall('D')).grid(row=15, column=recall_column)
-Button(root, text='E', width=5, bg=recall_color, command=lambda: recall('E')).grid(row=16, column=recall_column)
-Button(root, text='F', width=5, bg=recall_color, command=lambda: recall('F')).grid(row=17, column=recall_column)
+Button(root, text='A', width=5, bg=recall_color, command=lambda: recall(10)).grid(row=12, column=recall_column)
+Button(root, text='B', width=5, bg=recall_color, command=lambda: recall(11)).grid(row=13, column=recall_column)
+Button(root, text='C', width=5, bg=recall_color, command=lambda: recall(12)).grid(row=14, column=recall_column)
+Button(root, text='D', width=5, bg=recall_color, command=lambda: recall(13)).grid(row=15, column=recall_column)
+Button(root, text='E', width=5, bg=recall_color, command=lambda: recall(14)).grid(row=16, column=recall_column)
+Button(root, text='F', width=5, bg=recall_color, command=lambda: recall(15)).grid(row=17, column=recall_column)
 try:
     with open('preset_labels.txt') as f:
         labels = f.read().splitlines()
