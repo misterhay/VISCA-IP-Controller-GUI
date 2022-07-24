@@ -29,8 +29,33 @@ def store(n):
     c.save_preset(n)
 
 def recall(n):
+    print('Recalling', n)
     c.info_display(False)
     c.recall_preset(n)
+
+def key_press(event):
+    key = event.char
+    #print(key, type(key))
+    if key == '0':
+        recall(0)
+    if key == '1':
+        recall(1)
+    if key == '2':
+        recall(2)
+    if key == '3':
+        recall(3)
+    if key == '4':
+        recall(4)
+    if key == '5':
+        recall(5)
+    if key == '6':
+        recall(6)
+    if key == '7':
+        recall(7)
+    if key == '8':
+        recall(8)
+    if key == '9':
+        recall(9)
 
 # GUI
 
@@ -204,4 +229,5 @@ Button(root, text='Info Off', bg=on_off_color, width=button_width, command=lambd
 # Connection Label
 #Label(root, textvariable=display_message).grid(row=6, column=4, columnspan=3)
 
+root.bind('<Key>', key_press) # so we have keyboard events triggering that function
 root.mainloop()
