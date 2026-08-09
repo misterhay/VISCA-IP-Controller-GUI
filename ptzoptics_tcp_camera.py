@@ -124,15 +124,14 @@ class Camera:
         return self._send_command('04 ' + modes[mode])
 
     def set_autofocus_mode(self, mode: str):
-        """mode: 'normal', 'interval', or 'zoom trigger'.
+        """mode: 'normal', 'interval', 'zoom trigger', or 'one push trigger'.
         Note: PTZOptics cameras do not support this command; it is a no-op here
         for drop-in compatibility with visca_over_ip.Camera.
         """
-        modes = {'normal', 'interval', 'zoom trigger'}
+        modes = {'normal', 'interval', 'zoom trigger', 'one push trigger'}
         if mode.lower() not in modes:
-            raise ValueError(f'"{mode}" is not a valid mode. Valid modes: {", ".join(modes)}')
-        # PTZOptics does not implement CAM_AFMode (Sony command 04 57 0x) — silently ignored
-
+            raise ValueError(f'"{mode}" is not a valid mode. Valid modes: {", ".join(sorted(modes))}')
+        # PTZOptics does not implement the Sony AF mode / one-push AF commands — silently ignored
     def save_preset(self, preset_num: int):
         """Save current camera position/settings to preset slot 0-127."""
         if not 0 <= preset_num <= 127:
