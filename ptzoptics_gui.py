@@ -5,7 +5,6 @@
 # sudo apt install python3-tk
 
 from ptzoptics_tcp_camera import Camera
-from time import sleep
 
 camera_ip = '10.15.16.54'  # PTZOptics PT12-SDI on the local network
 camera_port = 5678
